@@ -1,7 +1,7 @@
 {
   "name": "object-storage-factory",
   "version": "1.0.0",
-  "description": "Object Storage Factory",
+  "description": "Object storage factory implemented with the same interface as browser's local storage.",
   "license": "MIT",
   "author": "Paweł Wojtasiński <pawel.wojtasinski.1995@gmail.com>",
   "repository": "git@github.com:playerony/object-storage-factory.git",

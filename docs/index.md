@@ -6,6 +6,6 @@
 
 ## Packages
 
-| Package                                               | Description                               |
-| ----------------------------------------------------- | ----------------------------------------- |
-| [object-storage-factory](./object-storage-factory.md) | A small library for common math functions |
+| Package                                               | Description                                                                            |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [object-storage-factory](./object-storage-factory.md) | Object storage factory implemented with the same interface as browser's local storage. |

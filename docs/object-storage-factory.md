@@ -4,11 +4,10 @@
 
 ## object-storage-factory package
 
-A small library for common math functions
+Object storage factory implemented with the same interface as browser's local storage.
 
 ## Functions
 
-| Function                                          | Description                                             |
-| ------------------------------------------------- | ------------------------------------------------------- |
-| [avg(a, b, c)](./object-storage-factory.avg.md)   | Calculate the average of three numbers                  |
-| [sum3(a, b, c)](./object-storage-factory.sum3.md) | <b><i>(BETA)</i></b> Calculate the sum of three numbers |
+| Function                                                                   | Description                                                                                                                             |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| [objectStorageFactory()](./object-storage-factory.objectstoragefactory.md) | This interface provides access to object storage. It allows, for example, the addition, modification, or deletion of stored data items. |
