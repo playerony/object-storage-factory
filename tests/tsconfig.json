@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "references": [
+    {
+      "path": "..",
+      "name": "object-storage-factory"
+    }
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": "..",
+    "types": ["jest"]
+  },
+  "include": ["."]
+}
