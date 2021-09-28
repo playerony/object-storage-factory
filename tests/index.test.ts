@@ -1,21 +1,78 @@
-import { avg, sum3 } from '..';
+import { objectStorageFactory } from '..';
 
-describe('avg should calculate an average properly', () => {
-  test('three positive numbers', () => {
-    expect(avg(3, 4, 5)).toBe(4);
+describe('objectStorageFactory Function', () => {
+  let storage: Storage;
+
+  beforeEach(() => {
+    storage = objectStorageFactory();
   });
 
-  test('three negative numbers', () => {
-    expect(avg(3, -4, -5)).toBe(-2);
-  });
-});
-
-describe('sum3 should calculate a sum properly', () => {
-  test('three positive numbers', () => {
-    expect(sum3(3, 4, 5)).toBe(12);
+  test('should import', () => {
+    expect(typeof objectStorageFactory).toEqual('function');
   });
 
-  test('three negative numbers', () => {
-    expect(sum3(3, -4, -5)).toBe(-6);
+  describe('setItem and getItem', () => {
+    it('sets values and returns', () => {
+      expect(storage.setItem('foo', 'Foo')).toBeUndefined();
+      expect(storage.getItem('foo')).toEqual('Foo');
+
+      expect(storage.setItem('empty', '')).toBeUndefined();
+      expect(storage.getItem('empty')).toEqual('');
+    });
+
+    it('should throw an error when passed key or value is not a string', () => {
+      // @ts-ignore
+      expect(() => storage.getItem(null)).toThrow('[getItem] key must be a string');
+
+      // @ts-ignore
+      expect(() => storage.setItem(null, '123')).toThrow('[setItem] key must be a string');
+
+      // @ts-ignore
+      expect(() => storage.setItem('123', null)).toThrow('[setItem] value must be a string');
+    });
+  });
+
+  describe('removeItem', () => {
+    it('remove values', () => {
+      expect(storage.setItem('foo', 'foo')).toBeUndefined();
+      expect(storage.getItem('foo')).toEqual('foo');
+
+      storage.removeItem('foo');
+      expect(storage.getItem('foo')).toBeNull();
+    });
+
+    it('should throw an error when passed key is not a string', () => {
+      // @ts-ignore
+      expect(() => storage.removeItem(null)).toThrow('[removeItem] key must be a string');
+    });
+  });
+
+  describe('key', () => {
+    it('return key by index', () => {
+      storage.setItem('x', '');
+      storage.setItem('', 'foo');
+
+      expect(storage.key(0)).toEqual('x');
+      expect(storage.key(1)).toEqual('');
+      expect(storage.key(2)).toBeNull();
+    });
+
+    it('should throw an error when passed index is not a number', () => {
+      // @ts-ignore
+      expect(() => storage.key(null)).toThrow('[key] index must be a number');
+    });
+  });
+
+  describe('length and clear', () => {
+    it('should pass', () => {
+      storage.setItem('1', 'foo');
+      storage.setItem('2', 'foo');
+      storage.setItem('3', 'foo');
+      storage.setItem('4', 'foo');
+
+      expect(storage.length).toEqual(4);
+      storage.clear();
+      expect(storage.length).toEqual(0);
+    });
   });
 });

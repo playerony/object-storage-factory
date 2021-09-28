@@ -1,42 +1,92 @@
 /**
- * @packageDocumentation A small library for common math functions
+ * @packageDocumentation Object storage factory implemented with the same interface as browser's local storage.
  */
 
 /**
- * Calculate the average of three numbers
- *
- * @param a - first number
- * @param b - second number
- * @param c - third number
+ * This interface provides access to object storage. It allows, for example, the addition, modification, or deletion of stored data items.
  *
  * @public
  */
-export function avg(a: number, b: number, c: number): number {
-  return sum3(a, b, c) / 3;
-}
+export function objectStorageFactory(): Storage {
+  let memoryStorage: Record<string, string> = {};
 
-/**
- * Calculate the sum of three numbers
- *
- * @param a - first number
- * @param b - second number
- * @param c - third number
- *
- * @beta
- */
-export function sum3(a: number, b: number, c: number): number {
-  return sum2(a, sum2(b, c));
-}
+  /**
+   * Removes all key/value pairs, if there are any.
+   */
+  function clear(): void {
+    memoryStorage = {};
+  }
 
-/**
- * Calculate the sum of two numbers
- *
- * @param a - first number
- * @param b - second number
- *
- * @internal
- */
-export function sum2(a: number, b: number): number {
-  const sum = a + b;
-  return sum;
+  /**
+   * Returns the current value associated with the given key, or null if the given key does not exist.
+   */
+  function getItem(key: string): string | null {
+    if (typeof key !== 'string') {
+      throw new TypeError('[getItem] key must be a string');
+    }
+
+    const value = memoryStorage[key];
+
+    return typeof value === 'string' ? value : null;
+  }
+
+  /**
+   * Returns the name of the nth key, or null if n is greater than or equal to the number of key/value pairs.
+   */
+  function key(index: number): string | null {
+    if (typeof index !== 'number') {
+      throw new TypeError('[key] index must be a number');
+    }
+
+    const keys = Object.keys(memoryStorage);
+
+    const value = keys[index];
+    return typeof value === 'string' ? value : null;
+  }
+
+  /**
+   * Removes the key/value pair with the given key, if a key/value pair with the given key exists.
+   */
+  function removeItem(key: string): void {
+    if (typeof key !== 'string') {
+      throw new TypeError('[removeItem] key must be a string');
+    }
+
+    delete memoryStorage[key];
+  }
+
+  /**
+   * Sets the value of the pair identified by key to value, creating a new key/value pair if none existed for key previously.
+   */
+  function setItem(key: string, value: string): void {
+    if (typeof key !== 'string') {
+      throw new TypeError('[setItem] key must be a string');
+    }
+
+    if (typeof value !== 'string') {
+      throw new TypeError('[setItem] value must be a string');
+    }
+
+    memoryStorage[key] = value;
+  }
+
+  /**
+   * Returns the number of key/value pairs.
+   */
+  function length(): number {
+    const keys = Object.keys(memoryStorage);
+
+    return keys.length;
+  }
+
+  return {
+    key,
+    clear,
+    getItem,
+    setItem,
+    removeItem,
+    get length() {
+      return length();
+    },
+  };
 }

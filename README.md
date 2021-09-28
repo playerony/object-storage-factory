@@ -1,6 +1,4 @@
-# Object Storage Factory
-
-Object Storage Factory
+# object-storage-factory
 
 ![Lint](https://github.com/playerony/object-storage-factory/workflows/lint/badge.svg)
 ![Test](https://github.com/playerony/object-storage-factory/workflows/test/badge.svg)
@@ -8,6 +6,8 @@ Object Storage Factory
 ![Prettier](https://github.com/playerony/object-storage-factory/workflows/prettier/badge.svg)
 ![Typecheck](https://github.com/playerony/object-storage-factory/workflows/typecheck/badge.svg)
 ![Commitlint](https://github.com/playerony/object-storage-factory/workflows/commitlint/badge.svg)
+
+Object storage factory implemented with the same interface as the browser's local storage.
 
 # example
 
