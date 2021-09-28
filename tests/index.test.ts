@@ -49,10 +49,12 @@ describe('objectStorageFactory Function', () => {
 
   describe('key', () => {
     it('return key by index', () => {
-      storage.setItem('x', 'foo');
+      storage.setItem('x', '');
+      storage.setItem('', 'foo');
 
       expect(storage.key(0)).toEqual('x');
-      expect(storage.key(1)).toBeNull();
+      expect(storage.key(1)).toEqual('');
+      expect(storage.key(2)).toBeNull();
     });
 
     it('should throw an error when passed index is not a number', () => {

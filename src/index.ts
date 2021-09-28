@@ -41,7 +41,7 @@ export function objectStorageFactory(): Storage {
     const keys = Object.keys(memoryStorage);
 
     const value = keys[index];
-    return value ? value : null;
+    return typeof value === 'string' ? value : null;
   }
 
   /**
