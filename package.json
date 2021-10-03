@@ -65,5 +65,15 @@
   "volta": {
     "node": "14.17.4",
     "yarn": "1.22.11"
-  }
+  },
+  "keywords": [
+    "object",
+    "storage",
+    "factory",
+    "wrapper",
+    "storage-interface",
+    "javascript",
+    "typescript",
+    "tests"
+  ]
 }
