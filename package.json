@@ -71,6 +71,7 @@
     "storage",
     "factory",
     "wrapper",
+    "interface",
     "storage-interface",
     "javascript",
     "typescript",
