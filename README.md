@@ -34,7 +34,7 @@ objectStorage.getItem('wrong_key'); // null
 
 # usage
 
-Useful when you will not be able to use local storage or session storage due to security or other thrown error.
+Useful when you will not be able to use localStorage or sessionStorage due to security or other thrown error.
 
 # license
 
